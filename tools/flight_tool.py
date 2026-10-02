@@ -14,8 +14,8 @@ os.environ["REQUESTS_CA_BUNDLE"] = certifi.where()
 API_KEY = os.getenv("AVIATIONSTACK_API_KEY")
 
 # Default origin when user says only destination, e.g. "Japan trip"
-# Change this if your default location is not Bangladesh/Dhaka.
-DEFAULT_ORIGIN_IATA = os.getenv("DEFAULT_ORIGIN_IATA", "DAC")
+
+DEFAULT_ORIGIN_IATA = os.getenv("DEFAULT_ORIGIN_IATA", "DEL")
 
 
 BASE_URL = "https://api.aviationstack.com/v1/flights"
@@ -220,13 +220,7 @@ def resolve_location_to_iata(location: str):
     """
     Converts country/city/airport/IATA into IATA code.
 
-    Examples:
-    Bangladesh -> DAC
-    Japan -> NRT
-    Dhaka -> DAC
-    Tokyo -> NRT
-    DAC -> DAC
-    """
+    
 
     if not location:
         return None
@@ -327,8 +321,8 @@ def parse_route(query: str):
 
     Can return:
     None, None  -> global live flights
-    DAC, NRT    -> filtered route
-    DAC, None   -> all flights from DAC
+    DEL, NRT    -> filtered route
+    DEL, None   -> all flights from DEL
     None, NRT   -> all flights to NRT
     """
 
@@ -536,6 +530,6 @@ def search_flights(query: str, limit: int = 10):
 
 
 if __name__ == "__main__":
-    print(search_flights("Plan a 7 days Japan trip from Bangladesh"))
+    print(search_flights("Plan a 7 days Japan trip from India"))
     print("\n" + "=" * 80 + "\n")
     print(search_flights("all country flight info"))
