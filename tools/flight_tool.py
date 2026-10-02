@@ -219,7 +219,7 @@ def get_best_airport_for_country(country_code: str):
 def resolve_location_to_iata(location: str):
     """
     Converts country/city/airport/IATA into IATA code.
-
+    """
     
 
     if not location:
